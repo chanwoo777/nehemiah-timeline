@@ -34,6 +34,7 @@ Plain HTML, CSS and JavaScript with no build step and no dependencies. Fonts com
 | `styles.css` | Parchment design and phone layout |
 | `app.js` | Map, timeline, translations and story data |
 | `favicon.svg` | Browser tab icon |
+| `og.png` | Preview image shown when the link is shared (KakaoTalk, social media, messages) |
 
 To try it locally, open `index.html` in a browser.
 
