@@ -398,6 +398,7 @@ body{margin:0}
   .map-cap b{font-size:16px}
   html[lang="ko"] .map-cap b{font-size:15px}
   .gate-card{left:8px;right:8px;bottom:8px;width:auto}
+  .rl.minor,.rl .sub{display:none}
   .tl-hint,.legend{display:none}
   .tl-head{padding:0 12px 4px}
   .scroll{margin:10px 22px 8px}

@@ -137,18 +137,18 @@ var RIVERS = [
 ];
 var RL = [
   {t:['Mediterranean','Sea'], ko:['지중해'], ll:[32.9,33.15], c:'sea-l', v:'e'},
-  {t:['TRANS-EUPHRATES'], ko:['강 서쪽 지방'], sub:'Beyond the River', koSub:'유브라데 강 건너편', ll:[38.0,32.75], v:'e'},
-  {t:['SYRIAN DESERT'], ko:['시리아 사막'], ll:[40.4,31.5], v:'e'},
+  {t:['TRANS-EUPHRATES'], ko:['강 서쪽 지방'], sub:'Beyond the River', koSub:'유브라데 강 건너편', ll:[38.4,32.3], v:'e'},
+  {t:['SYRIAN DESERT'], ko:['시리아 사막'], ll:[40.9,31.2], v:'e', minor:1},
   {t:['BABYLONIA'], ko:['바벨로니아'], ll:[45.9,31.72], v:'e'},
-  {t:['ELAM'], ko:['엘람'], ll:[47.45,33.15], v:'e'},
-  {t:['ZAGROS MOUNTAINS'], ko:['자그로스 산맥'], ll:[46.75,34.5], rot:-38, v:'e'},
-  {t:['ASSYRIA'], ko:['앗수르'], ll:[43.0,36.75], v:'e'},
+  {t:['ELAM'], ko:['엘람'], ll:[47.45,33.15], v:'e', minor:1},
+  {t:['ZAGROS MOUNTAINS'], ko:['자그로스 산맥'], ll:[46.75,34.5], rot:-38, v:'e', minor:1},
+  {t:['ASSYRIA'], ko:['앗수르'], ll:[43.0,36.75], v:'e', minor:1},
   {t:['ARABIA'], ko:['아라비아'], ll:[40.0,28.9], v:'e'},
   {t:['EGYPT'], ko:['애굽'], ll:[31.9,28.9], v:'e'},
   {t:['Persian Gulf'], ko:['페르시아만'], ll:[49.5,28.35], c:'sea-l', v:'e'},
   {t:['Euphrates'], ko:['유브라데 강'], ll:[41.9,34.12], c:'riv', v:'e'},
   {t:['Tigris'], ko:['티그리스 강'], ll:[43.95,35.3], rot:-72, c:'riv', v:'e'},
-  {t:['CYPRUS'], ko:['구브로'], ll:[33.25,35.08], c:'sm', v:'e'},
+  {t:['CYPRUS'], ko:['구브로'], ll:[33.25,35.08], c:'sm', v:'e', minor:1},
   {t:['Mediterranean','Sea'], ko:['지중해'], ll:[34.28,32.5], c:'sea-l', v:'j'},
   {t:['JUDAH'], ko:['유다'], ll:[35.0,31.4], v:'j'},
   {t:['SAMARIA'], ko:['사마리아'], ll:[35.38,32.52], v:'j'},
@@ -553,7 +553,7 @@ var STAR = 'M0 -9L2.4 -2.4L9 0L2.4 2.4L0 9L-2.4 2.4L-9 0L-2.4 -2.4Z';
 var rlEls = [];
 RL.forEach(function(l){
   var p = P(l.ll);
-  var g = uiGroup(gRL, p[0], p[1], 'rl '+(l.c||'')+' v-'+l.v, l.rot, uiR);
+  var g = uiGroup(gRL, p[0], p[1], 'rl '+(l.c||'')+' v-'+l.v+(l.minor?' minor':''), l.rot, uiR);
   g._l = l; rlEls.push(g);
 });
 function renderRL(){
