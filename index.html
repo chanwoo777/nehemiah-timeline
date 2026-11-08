@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#E8D8B4">
+<title>느헤미야와 예루살렘 성벽 · Nehemiah and the Wall</title>
+<meta name="description" content="느헤미야서 1–13장 인터랙티브 지도와 타임라인 (한국어/English). Interactive map and timeline of Nehemiah 1–13.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="느헤미야와 예루살렘 성벽 · Nehemiah and the Wall">
+<meta property="og:description" content="느헤미야서 1–13장 인터랙티브 지도와 타임라인 (한국어/English). Interactive map and timeline of Nehemiah 1–13.">
+<meta property="og:url" content="https://chanwoo777.github.io/nehemiah-timeline/">
+<meta property="og:locale" content="ko_KR">
+<link rel="canonical" href="https://chanwoo777.github.io/nehemiah-timeline/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Nanum+Myeongjo:wght@400;700;800&family=Gowun+Batang:wght@400;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="top-main">
+      <p class="eyebrow" data-i18n="eyebrow"></p>
+      <h1 data-i18n="h1"></h1>
+      <p class="lede" data-i18n="lede"></p>
+    </div>
+    <div class="lang" role="group" id="langGroup">
+      <button type="button" data-lang="ko" lang="ko">한국어</button>
+      <button type="button" data-lang="en" lang="en">English</button>
+    </div>
+    <p class="source" data-i18n-html="source"></p>
+  </header>
+
+  <main class="app">
+    <section class="map-frame" id="mapFrame" data-i18n-aria="mapAria">
+      <svg class="map" id="region" role="img" data-i18n-aria="regionAria" preserveAspectRatio="xMidYMid slice"></svg>
+      <svg class="map" id="city" role="img" data-i18n-aria="cityAria" preserveAspectRatio="xMidYMid slice" hidden></svg>
+      <div class="map-tabs" role="tablist" data-i18n-aria="tabsAria">
+        <button role="tab" data-view="empire" id="tab-empire" data-i18n="tabEmpire"></button>
+        <button role="tab" data-view="judah" id="tab-judah" data-i18n="tabJudah"></button>
+        <button role="tab" data-view="city" id="tab-city" data-i18n="tabCity"></button>
+      </div>
+      <div class="map-cap" id="mapCap"></div>
+      <svg class="compass" viewBox="-36 -40 72 76" aria-hidden="true">
+        <circle r="25" fill="var(--land)" fill-opacity=".75" stroke="currentColor" stroke-width="1"/>
+        <circle r="20" fill="none" stroke="currentColor" stroke-width=".6"/>
+        <path d="M0 -30L4.5 -4.5L0 0Z" fill="var(--accent)"/><path d="M0 -30L-4.5 -4.5L0 0Z" fill="var(--accent)" fill-opacity=".55"/>
+        <path d="M0 30L4.5 4.5L0 0Z" fill="currentColor" fill-opacity=".55"/><path d="M0 30L-4.5 4.5L0 0Z" fill="currentColor"/>
+        <path d="M30 0L4.5 4.5L0 0Z" fill="currentColor"/><path d="M30 0L4.5 -4.5L0 0Z" fill="currentColor" fill-opacity=".55"/>
+        <path d="M-30 0L-4.5 -4.5L0 0Z" fill="currentColor"/><path d="M-30 0L-4.5 4.5L0 0Z" fill="currentColor" fill-opacity=".55"/>
+        <text x="0" y="-32" text-anchor="middle" font-family="IM Fell English, Georgia, serif" font-size="11" fill="var(--accent)">N</text>
+      </svg>
+      <div class="gate-card" id="gateCard" hidden>
+        <button class="gc-close" id="gcClose" data-i18n-aria="gcClose">×</button>
+        <div class="gc-name" id="gcName"></div>
+        <p id="gcBody"></p>
+        <a id="gcRef" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+    </section>
+
+    <article class="detail" id="detail">
+      <div class="detail-scroll">
+        <div class="d-meta"><span class="chip-ph" id="dPhase"></span><span class="d-count" id="dCount"></span></div>
+        <h2 class="d-title" id="dTitle" aria-live="polite"></h2>
+        <div class="d-sub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span id="dDate"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="dPlace"></span>
+        </div>
+        <h3 class="d-h" data-i18n="whatH"></h3>
+        <p class="d-did" id="dDid"></p>
+        <h3 class="d-h" data-i18n="peopleH"></h3>
+        <div class="people" id="dPeople"></div>
+        <p class="d-note" id="dNote"></p>
+        <div class="links">
+          <a class="niv" id="dLink" target="_blank" rel="noopener noreferrer"></a>
+          <a class="alt" id="dAlt" target="_blank" rel="noopener noreferrer"></a>
+        </div>
+      </div>
+    </article>
+
+    <section class="timeline" data-i18n-aria="tlTitle">
+      <div class="tl-head">
+        <h2 class="tl-title" data-i18n="tlTitle"></h2>
+        <span class="tl-hint" data-i18n="tlHint"></span>
+        <div class="legend" id="legend"></div>
+        <span class="filter" id="filter" hidden></span>
+        <div class="tl-ctrl">
+          <button class="navbtn" id="prev" data-i18n-aria="prev"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+          <button class="navbtn" id="next" data-i18n-aria="next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <div class="scroll">
+        <div class="tl-viewport" id="tlView" tabindex="0" role="group" aria-roledescription="timeline" data-i18n-aria="tlAria">
+          <div class="track" id="track"><div class="axis" id="axis"></div></div>
+          <div class="needle" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="scrub">
+        <input type="range" id="scrub" min="0" max="30" step="0.01" value="3" data-i18n-aria="scrubAria">
+        <div class="ticks" id="ticks" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <section class="cast" aria-labelledby="castH">
+    <h2 class="sec-h" id="castH" data-i18n="castH"></h2>
+    <p class="sec-p" data-i18n="castP"></p>
+    <div class="cast-grid" id="cast"></div>
+  </section>
+
+  <section class="notes">
+    <h2 data-i18n="notesH"></h2>
+    <div><b data-i18n="n1h"></b><p data-i18n="n1"></p></div>
+    <div><b data-i18n="n2h"></b><p data-i18n="n2"></p></div>
+    <div><b data-i18n="n3h"></b><p data-i18n="n3"></p></div>
+  </section>
+</div>
+
+<nav class="mbar" data-i18n-aria="barAria">
+  <button class="navbtn" id="mprev" type="button" data-i18n-aria="prev"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button class="mbar-mid" id="mMid" type="button"><span class="mbar-count" id="mCount"></span><span class="mbar-title" id="mTitle"></span></button>
+  <button class="navbtn" id="mnext" type="button" data-i18n-aria="next"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+</nav>
+</body>
+</html>
