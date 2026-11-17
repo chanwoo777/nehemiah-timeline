@@ -767,10 +767,10 @@ function showMap(ev, animate){
   var prev = curView; curView = view; setTabs(view);
   if(view !== 'city') closeGate();
   if(view === 'city'){
-    region.hidden = true; city.hidden = false; travAnim++;
+    region.setAttribute('hidden', ''); city.removeAttribute('hidden'); travAnim++;
     drawCity(ev);
   } else {
-    city.hidden = true; region.hidden = false;
+    city.setAttribute('hidden', ''); region.removeAttribute('hidden');
     goRegion(view, animate && prev && prev!=='city');
     drawRegion(ev, view);
   }
@@ -1036,8 +1036,8 @@ langBtns.forEach(function(b){
 /* ---------- boot & resize ---------- */
 function relayout(){
   layoutTL(); renderTL();
-  if(!region.hidden && vbCur){ var v=VIEWS[curRegionView]; vbAnim++; vbCur = fit(v.rect, v.core, EXT, frameAspect()); applyRegionUI(); }
-  if(!city.hidden) layoutCity();
+  if(!region.hasAttribute('hidden') && vbCur){ var v=VIEWS[curRegionView]; vbAnim++; vbCur = fit(v.rect, v.core, EXT, frameAspect()); applyRegionUI(); }
+  if(!city.hasAttribute('hidden')) layoutCity();
 }
 applyLang();
 layoutTL();
